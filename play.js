@@ -20,6 +20,6 @@ conn.setEncoding("utf8");
 
 setSnakeName(conn);
 
-setupInput();
+setupInput(conn);
 
 printServerData(conn);
