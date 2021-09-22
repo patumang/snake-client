@@ -11,12 +11,13 @@ const setupInput = (conn) => {
   return stdin;
 };
 
-const handleUserInput = (key, conn) => {
+const handleUserInput = (key) => {
   // \u0003 maps to ctrl+c input
   if (key === '\u0003') {
     process.exit();
-  }
-  if (key === 'w') {
+  } else if (key === '\u2386') {
+    console.log("hello");
+  } else if (key === 'w') {
     connection.write("Move: up");
   } else if (key === 's') {
     connection.write("Move: down");
@@ -24,6 +25,9 @@ const handleUserInput = (key, conn) => {
     connection.write("Move: left");
   } else if (key === 'd') {
     connection.write("Move: right");
+  } else {
+    connection.write(`Say: ${key}`);
+    process.stdout.write(key);
   }
   //process.stdout.write(key);
 
